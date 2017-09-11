@@ -68,6 +68,11 @@ div.work .time {
 	font-weight: normal;
 }
 
+.importantnote {
+	color: #C00;
+	font-weight: bold;
+}
+
 
 div.publication {
 	margin-bottom: 1em;
@@ -75,6 +80,10 @@ div.publication {
 }
 div.publication .title {
 	font-size: 20px;
+	font-weight: normal;
+}
+div.publication .authors {
+	font-size: 18px;
 	font-weight: normal;
 }
 div.publication .self {
