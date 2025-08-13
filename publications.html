@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Publications - Haibin Huang</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		/* Navigation Bar */
+		/* Navigation */
+		.nav-wrapper {
+			background: white;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		nav {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 70px;
+		}
+
+		.nav-brand {
+			font-size: 1.5rem;
+			font-weight: 700;
+			background: var(--primary-gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-decoration: none;
+		}
+
+		.nav-links {
+			display: flex;
+			gap: 35px;
+			list-style: none;
+		}
+
+		.nav-links a {
+			color: var(--text-primary);
+			text-decoration: none;
+			font-weight: 500;
+			position: relative;
+			transition: color 0.3s ease;
+			padding: 5px 0;
+		}
+
+		.nav-links a:hover {
+			color: var(--accent-color);
+		}
+
+		.nav-links a.active {
+			color: var(--accent-color);
+		}
+
+		.nav-links a.active::after,
+		.nav-links a:hover::after {
+			content: '';
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: var(--accent-color);
+			animation: slideIn 0.3s ease;
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: scaleX(0);
+			}
+
+			to {
+				transform: scaleX(1);
+			}
+		}
+
+		.header {
+			text-align: center;
+			padding: 40px 0;
+			color: white;
+		}
+
+		.header h1 {
+			font-size: 3rem;
+			margin-bottom: 10px;
+			font-weight: 700;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+		}
+
+		.header p {
+			font-size: 1.2rem;
+			opacity: .9;
+			font-weight: 300;
+		}
+
+		.content {
+			background: white;
+			border-radius: 20px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+			position: relative;
+			z-index: 1;
+		}
+
+		.section {
+			padding: 60px 40px;
+		}
+
+		.section h2 {
+			font-size: 2.5rem;
+			margin-bottom: 30px;
+			color: #2c3e50;
+			position: relative;
+			padding-bottom: 15px;
+		}
+
+		.section h2:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 60px;
+			height: 4px;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			border-radius: 2px;
+		}
+
+		.back-link {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			color: white;
+			text-decoration: none;
+			margin-bottom: 20px;
+			padding: 10px 20px;
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 25px;
+			transition: all 0.3s ease;
+		}
+
+		.back-link:hover {
+			background: rgba(255, 255, 255, 0.3);
+			transform: translateX(-5px);
+		}
+
+		/* Filter buttons */
+		.filter-container {
+			display: flex;
+			justify-content: center;
+			gap: 15px;
+			margin-bottom: 40px;
+			flex-wrap: wrap;
+		}
+
+		.filter-btn {
+			padding: 10px 20px;
+			border: 2px solid #667eea;
+			background: white;
+			color: #667eea;
+			border-radius: 25px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			font-weight: 500;
+		}
+
+		.filter-btn:hover,
+		.filter-btn.active {
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			color: white;
+			transform: translateY(-2px);
+		}
+
+		/* Year divider */
+		.year-divider {
+			text-align: center;
+			margin: 40px 0 30px;
+			position: relative;
+		}
+
+		.year-divider h3 {
+			display: inline-block;
+			background: white;
+			padding: 0 20px;
+			color: #667eea;
+			font-size: 1.8rem;
+			font-weight: 600;
+			position: relative;
+			z-index: 1;
+		}
+
+		.year-divider:before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: linear-gradient(90deg, transparent, #667eea, transparent);
+		}
+
+		/* Publication items */
+		.publication {
+			background: #fff;
+			padding: 30px;
+			margin-bottom: 25px;
+			border-radius: 15px;
+			border: 1px solid #e9ecef;
+			transition: all .3s ease;
+			display: grid;
+			grid-template-columns: 1fr minmax(180px, 280px);
+			gap: 25px;
+			align-items: start;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.publication:before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 5px;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		.publication:hover {
+			border-color: #667eea;
+			box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+			transform: translateX(5px);
+		}
+
+		.publication:hover:before {
+			opacity: 1;
+		}
+
+		.publication-content {
+			min-width: 0;
+			padding-left: 10px;
+		}
+
+		.publication-figure {
+			width: 100%;
+			height: auto;
+			max-height: 200px;
+			object-fit: contain;
+			border-radius: 10px;
+			border: 2px solid #f0f0f0;
+			background: #fafafa;
+			padding: 8px;
+			display: block;
+			transition: all 0.3s ease;
+		}
+
+		.publication:hover .publication-figure {
+			border-color: #667eea30;
+			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+		}
+
+		.publication-title {
+			font-size: 1.3rem;
+			color: #2c3e50;
+			margin-bottom: 12px;
+			font-weight: 600;
+			line-height: 1.4;
+		}
+
+		.publication-authors {
+			color: #666;
+			margin-bottom: 8px;
+			font-size: 0.95rem;
+			line-height: 1.6;
+		}
+
+		.publication-authors strong {
+			color: #667eea;
+			font-weight: 600;
+		}
+
+		.publication-venue {
+			color: #764ba2;
+			font-weight: 600;
+			font-style: italic;
+			margin-bottom: 12px;
+			font-size: 1.05rem;
+		}
+
+		.publication-links {
+			display: flex;
+			gap: 15px;
+			flex-wrap: wrap;
+			margin-top: 15px;
+		}
+
+		.publication-links a {
+			color: #667eea;
+			text-decoration: none;
+			padding: 6px 15px;
+			border: 1px solid #667eea30;
+			border-radius: 20px;
+			font-size: 0.9rem;
+			transition: all 0.2s ease;
+			background: #667eea05;
+		}
+
+		.publication-links a:hover {
+			background: #667eea;
+			color: white;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 10px rgba(102, 126, 234, 0.2);
+		}
+
+		/* Stats card */
+		.stats-card {
+			background: linear-gradient(135deg, #667eea10, #764ba210);
+			border: 2px solid #667eea30;
+			border-radius: 15px;
+			padding: 30px;
+			margin-bottom: 40px;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 30px;
+			text-align: center;
+		}
+
+		.stat-item h4 {
+			font-size: 2.5rem;
+			color: #667eea;
+			margin-bottom: 5px;
+			font-weight: 700;
+		}
+
+		.stat-item p {
+			color: #666;
+			font-size: 1rem;
+		}
+
+		@media (max-width: 768px) {
+			.container {
+				padding: 10px;
+			}
+
+			.navbar {
+				position: static;
+				margin-bottom: 20px;
+			}
+
+			.nav-links {
+				flex-direction: column;
+				align-items: center;
+				gap: 10px;
+			}
+
+			.header h1 {
+				font-size: 2rem;
+			}
+
+			.section {
+				padding: 40px 20px;
+			}
+
+			.publication {
+				grid-template-columns: 1fr;
+				gap: 20px;
+				padding: 20px;
+			}
+
+			.publication-figure {
+				max-width: 280px;
+				max-height: 180px;
+				margin: 0 auto;
+			}
+
+			.filter-container {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.stats-card {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="nav-wrapper">
+		<nav>
+			<a href="index.html" class="nav-brand"></a>
+			<button class="mobile-nav-toggle" onclick="toggleMobileNav()">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="nav-links" id="navLinks">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="publications.html">Publications</a></li>
+				<li><a href="services.html" class="active">Professional Services</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<main class="content">
+		<section class="section">
+			<!-- 2025 Publications -->
+			<div class="year-divider" data-year="2025">
+				<h3>2025</h3>
+			</div>
+
+			<div class="publication" data-year="2025">
+				<div class="publication-content">
+					<div class="publication-title">Hierarchical Neural Semantic Representation for 3D Semantic
+						Correspondence</div>
+					<div class="publication-authors">Keyu Du, Jingyu Hu, Haipeng Li, Hao Xu, <strong>Haibin
+							Huang</strong>, Chi-Wing Fu, Shuaicheng Liu</div>
+					<div class="publication-venue">ACM SIGGRAPH Asia 2025</div>
+					<div class="publication-links">
+						<a href="https://brotherhuang.github.io/">Project Page</a>
+						<a href="https://brotherhuang.github.io/">Paper</a>
+						<a href="https://brotherhuang.github.io/">Code</a>
+					</div>
+				</div>
+				<img src="./publications/3d_corres/3d_corres.jpg" alt="3D Correspondence Figure"
+					class="publication-figure" />
+			</div>
+
+			<div class="publication" data-year="2025">
+				<div class="publication-content">
+					<div class="publication-title">Physically Based Facial Texture Generation in the Wild</div>
+					<div class="publication-authors">Chi Wang, Junming Huang, Rong Zhang, Qi Wang, Haotian Yang,
+						Pengfei Wan, <strong>Haibin Huang</strong>, Chongyang Ma, Weiwei Xu</div>
+					<div class="publication-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence
+						(TPAMI) 2025</div>
+					<div class="publication-links">
+						<a href="https://brotherhuang.github.io/">Project Page</a>
+						<a href="https://brotherhuang.github.io/">Paper</a>
+						<a href="https://brotherhuang.github.io/">Code</a>
+					</div>
+				</div>
+				<img src="./publications/pftg/pftg.png" alt="Facial Texture Figure" class="publication-figure" />
+			</div>
+
+			<div class="publication" data-year="2025">
+				<div class="publication-content">
+					<div class="publication-title">MotionCrafter: Plug-and-play Motion Guidance for Diffusion Models
+					</div>
+					<div class="publication-authors">Yuxin Zhang, Weiming Dong, Fan Tang, Nisha Huang,
+						<strong>Haibin Huang</strong>, Chongyang Ma, Pengfei Wan, Tong-Yee Lee, Changsheng Xu
+					</div>
+					<div class="publication-venue">IEEE Transactions on Visualization and Computer Graphics (TVCG)
+						2025</div>
+					<div class="publication-links">
+						<a href="#">Coming Soon</a>
+					</div>
+				</div>
+				<img src="https://via.placeholder.com/280x180/28a745/ffffff?text=MotionCrafter"
+					alt="MotionCrafter Figure" class="publication-figure" />
+			</div>
+
+			<div class="publication" data-year="2025">
+				<div class="publication-content">
+					<div class="publication-title">IP-Prompter: Training-Free Theme-Specific Image Generation via
+						Dynamic Visual Prompting</div>
+					<div class="publication-authors">Yuxin Zhang, Minyan Luo, Weiming Dong, Xiao Yang,
+						<strong>Haibin Huang</strong>, Chongyang Ma, Oliver Deussen, Tong-Yee Lee, Changsheng Xu
+					</div>
+					<div class="publication-venue">ACM SIGGRAPH 2025</div>
+					<div class="publication-links">
+						<a href="#">Coming Soon</a>
+					</div>
+				</div>
+				<img src="https://via.placeholder.com/280x180/dc3545/ffffff?text=IP-Prompter" alt="IP-Prompter Figure"
+					class="publication-figure" />
+			</div>
+
+			<!-- 2024 Publications -->
+			<div class="year-divider" data-year="2024">
+				<h3>2024</h3>
+			</div>
+
+			<div class="publication" data-year="2024">
+				<div class="publication-content">
+					<div class="publication-title">DeTeCtive: Detecting AI-generated Text via Multi-Level
+						Contrastive Learning</div>
+					<div class="publication-authors">Xun Guo, Yongxin He, Shan Zhang, Ting Zhang, Wanquan Feng,
+						<strong>Haibin Huang</strong>, Chongyang Ma
+					</div>
+					<div class="publication-venue">NeurIPS 2024</div>
+					<div class="publication-links">
+						<a href="#">Paper</a>
+						<a href="#">Code</a>
+					</div>
+				</div>
+				<img src="https://via.placeholder.com/280x180/fd7e14/ffffff?text=DeTeCtive" alt="DeTeCtive Figure"
+					class="publication-figure" />
+			</div>
+
+			<div class="publication" data-year="2024">
+				<div class="publication-content">
+					<div class="publication-title">You Only Look Around: Learning Illumination-Invariant Feature for
+						Low-light Object Detection</div>
+					<div class="publication-authors">Mingbo Hong, Shen Cheng, <strong>Haibin Huang</strong>,
+						Haoqiang Fan, Shuaicheng Liu</div>
+					<div class="publication-venue">NeurIPS 2024</div>
+					<div class="publication-links">
+						<a href="#">Paper</a>
+						<a href="#">Code</a>
+					</div>
+				</div>
+				<img src="https://via.placeholder.com/280x180/6f42c1/ffffff?text=YOLA" alt="YOLA Figure"
+					class="publication-figure" />
+			</div>
+
+			<div class="publication" data-year="2024">
+				<div class="publication-content">
+					<div class="publication-title">Towards Unified 3D Hair Reconstruction from Single-View Portraits
+					</div>
+					<div class="publication-authors">Yujian Zheng, Yuda Qiu, Leyang Jin, Chongyang Ma,
+						<strong>Haibin Huang</strong>, Di Zhang, Pengfei Wang, Xiaoguang Han
+					</div>
+					<div class="publication-venue">SIGGRAPH Asia 2024</div>
+					<div class="publication-links">
+						<a href="#">Paper</a>
+						<a href="#">Project Page</a>
+					</div>
+				</div>
+				<img src="https://via.placeholder.com/280x180/e83e8c/ffffff?text=UniHair" alt="UniHair Figure"
+					class="publication-figure" />
+			</div>
+
+			<div class="publication" data-year="2024">
+				<div class="publication-content">
+					<div class="publication-title">InterFusion: Text-Driven Generation of 3D Human-Object
+						Interaction</div>
+					<div class="publication-authors">Sisi Dai, Wenhao Li, Haowen Sun, <strong>Haibin Huang</strong>,
+						Chongyang Ma, Hui Huang, Kai Xu, Ruizhen Hu</div>
+					<div class="publication-venue">ECCV 2024</div>
+					<div class="publication-links">
+						<a href="#">Paper</a>
+						<a href="#">Project Page</a>
+						<a href="#">Code</a>
+					</div>
+				</div>
+				<img src="https://via.placeholder.com/280x180/20c997/ffffff?text=InterFusion" alt="InterFusion Figure"
+					class="publication-figure" />
+			</div>
+
+			<div class="publication" data-year="2024">
+				<div class="publication-content">
+					<div class="publication-title">Direct-a-Video: Customized Video Generation with User-Directed
+						Camera Movement and Object Motion</div>
+					<div class="publication-authors">Shiyuan Yang, Liang Hou, <strong>Haibin Huang</strong>,
+						Chongyang Ma, Pengfei Wan, Di Zhang, Xiaodong Chen, Jing Liao</div>
+					<div class="publication-venue">SIGGRAPH 2024 (Conference)</div>
+					<div class="publication-links">
+						<a href="#">Paper</a>
+						<a href="#">Project Page</a>
+						<a href="#">Demo</a>
+					</div>
+				</div>
+				<img src="https://via.placeholder.com/280x180/6610f2/ffffff?text=Direct-a-Video"
+					alt="Direct-a-Video Figure" class="publication-figure" />
+			</div>
+
+			<div class="publication" data-year="2024">
+				<div class="publication-content">
+					<div class="publication-title">I2V-Adapter: A General Image-to-Video Adapter for Diffusion
+						Models</div>
+					<div class="publication-authors">Xun Guo, Mingwu Zheng, Liang Hou, Yuan Gao, Yufan Deng, Pengfei
+						Wan, Di Zhang, Yufan Liu, Weiming Hu, Zhengjun Zha, <strong>Haibin Huang</strong>, Chongyang
+						Ma</div>
+					<div class="publication-venue">SIGGRAPH 2024 (Conference)</div>
+					<div class="publication-links">
+						<a href="#">Paper</a>
+						<a href="#">Code</a>
+						<a href="#">Demo</a>
+					</div>
+				</div>
+				<img src="https://via.placeholder.com/280x180/ffc107/ffffff?text=I2V-Adapter" alt="I2V-Adapter Figure"
+					class="publication-figure" />
+			</div>
+		</section>
+	</main>
+	</div>
+
+	<script>
+		function filterPublications(year) {
+			const allPublications = document.querySelectorAll('.publication');
+			const allDividers = document.querySelectorAll('.year-divider');
+			const filterBtns = document.querySelectorAll('.filter-btn');
+
+			// Update active button
+			filterBtns.forEach(btn => btn.classList.remove('active'));
+			event.target.classList.add('active');
+
+			if (year === 'all') {
+				allPublications.forEach(pub => pub.style.display = 'grid');
+				allDividers.forEach(div => div.style.display = 'block');
+			} else {
+				allPublications.forEach(pub => {
+					if (pub.dataset.year === year) {
+						pub.style.display = 'grid';
+					} else {
+						pub.style.display = 'none';
+					}
+				});
+
+				allDividers.forEach(div => {
+					if (div.dataset.year === year) {
+						div.style.display = 'block';
+					} else {
+						div.style.display = 'none';
+					}
+				});
+			}
+		}
+	</script>
+</body>
+
+</html>

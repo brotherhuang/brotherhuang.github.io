@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Haibin Huang</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.header {
+			text-align: center;
+			padding: 60px 0;
+			color: white;
+		}
+
+		.header h1 {
+			font-size: 3.5rem;
+			margin-bottom: 10px;
+			font-weight: 700;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+		}
+
+		.header p {
+			font-size: 1.3rem;
+			opacity: .9;
+			font-weight: 300;
+		}
+
+		.content {
+			background: white;
+			border-radius: 20px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+			margin-top: -30px;
+			position: relative;
+			z-index: 1;
+		}
+
+		.section {
+			padding: 60px 40px;
+			border-bottom: 1px solid #f0f0f0;
+		}
+
+		.section:last-child {
+			border-bottom: none;
+		}
+
+		.section h2 {
+			font-size: 2.5rem;
+			margin-bottom: 30px;
+			color: #2c3e50;
+			position: relative;
+			padding-bottom: 15px;
+		}
+
+		.section h2:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 60px;
+			height: 4px;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			border-radius: 2px;
+		}
+
+		.intro-section {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			gap: 40px;
+			align-items: center;
+		}
+
+		.profile-image {
+			text-align: center;
+		}
+
+		.profile-image img {
+			width: 250px;
+			height: 250px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 6px solid #fff;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+			transition: transform .3s ease;
+		}
+
+		.profile-image img:hover {
+			transform: scale(1.05);
+		}
+
+		/* NEW: Contact links below selfie */
+		.profile-contact {
+			margin-top: 16px;
+			display: flex;
+			gap: 12px;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+
+		.profile-contact a {
+			font-size: .95rem;
+			color: #2c3e50;
+			text-decoration: none;
+			padding: 8px 14px;
+			border: 1px solid #e9ecef;
+			border-radius: 20px;
+			background: #fff;
+			transition: all .2s ease;
+		}
+
+		.profile-contact a:hover {
+			border-color: #667eea;
+			box-shadow: 0 4px 10px rgba(102, 126, 234, 0.15);
+			transform: translateY(-1px);
+		}
+
+		.intro-text {
+			font-size: 1.1rem;
+			line-height: 1.8;
+			color: #555;
+		}
+
+		.intro-text h3 {
+			font-size: 1.5rem;
+			color: #2c3e50;
+			margin-bottom: 15px;
+		}
+
+		.experience-item {
+			background: #f8f9fa;
+			padding: 30px;
+			margin-bottom: 25px;
+			border-radius: 15px;
+			border-left: 5px solid #667eea;
+			transition: transform .2s ease, box-shadow .2s ease;
+			display: grid;
+			grid-template-columns: 80px 1fr;
+			gap: 20px;
+			align-items: start;
+		}
+
+		.experience-item:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+		}
+
+		.company-logo {
+			width: 80px;
+			height: 80px;
+			border-radius: 12px;
+			object-fit: contain;
+			background: white;
+			padding: 4px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			border: 2px solid #e9ecef;
+		}
+
+		.experience-content h3 {
+			font-size: 1.4rem;
+			color: #2c3e50;
+			margin-bottom: 5px;
+		}
+
+		.experience-content .company {
+			color: #667eea;
+			font-weight: 600;
+			font-size: 1.1rem;
+			margin-bottom: 10px;
+		}
+
+		.experience-content .period {
+			color: #888;
+			font-style: italic;
+			margin-bottom: 15px;
+		}
+
+		.experience-item ul {
+			list-style: none;
+			padding-left: 0;
+		}
+
+		.experience-item li {
+			padding: 5px 0;
+			padding-left: 20px;
+			position: relative;
+		}
+
+		.experience-item li:before {
+			content: '→';
+			position: absolute;
+			left: 0;
+			color: #667eea;
+			font-weight: bold;
+		}
+
+		/* Publications: content left, figure right; figure fully visible (no cropping) */
+		.publication {
+			background: #fff;
+			padding: 25px;
+			margin-bottom: 20px;
+			border-radius: 12px;
+			border: 1px solid #e9ecef;
+			transition: all .3s ease;
+			display: grid;
+			grid-template-columns: 1fr minmax(140px, 240px);
+			gap: 20px;
+			align-items: start;
+		}
+
+		.publication:hover {
+			border-color: #667eea;
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+		}
+
+		.publication-content {
+			min-width: 0;
+		}
+
+		.publication-figure {
+			width: 100%;
+			height: auto;
+			max-height: 180px;
+			object-fit: contain;
+			/* no cropping */
+			border-radius: 8px;
+			border: 1px solid #e9ecef;
+			background: #fff;
+			padding: 4px;
+			display: block;
+		}
+
+		.publication-title {
+			font-size: 1.2rem;
+			color: #2c3e50;
+			margin-bottom: 8px;
+			font-weight: 600;
+		}
+
+		.publication-authors {
+			color: #666;
+			margin-bottom: 5px;
+		}
+
+		.publication-venue {
+			color: #667eea;
+			font-weight: 500;
+			font-style: italic;
+		}
+
+		.service-category {
+			margin-bottom: 40px;
+		}
+
+		.service-category h3 {
+			font-size: 1.4rem;
+			color: #2c3e50;
+			margin-bottom: 20px;
+			padding-bottom: 10px;
+			border-bottom: 2px solid #f0f0f0;
+		}
+
+		.service-list {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 15px;
+		}
+
+		.service-item {
+			background: #f8f9fa;
+			padding: 20px;
+			border-radius: 10px;
+			border-left: 4px solid #764ba2;
+		}
+
+		.service-item strong {
+			color: #2c3e50;
+		}
+
+		.contact-info {
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			color: white;
+			padding: 40px;
+			text-align: center;
+			margin: 40px -40px -60px -40px;
+			border-radius: 0 0 20px 20px;
+		}
+
+		.contact-info h3 {
+			margin-bottom: 20px;
+			font-size: 1.8rem;
+		}
+
+		.contact-links {
+			display: flex;
+			justify-content: center;
+			gap: 30px;
+			flex-wrap: wrap;
+		}
+
+		.contact-links a {
+			color: white;
+			text-decoration: none;
+			padding: 10px 20px;
+			border: 2px solid rgba(255, 255, 255, 0.3);
+			border-radius: 25px;
+			transition: all .3s ease;
+		}
+
+		.contact-links a:hover {
+			background: rgba(255, 255, 255, 0.2);
+			border-color: white;
+			transform: translateY(-2px);
+		}
+
+		@media (max-width: 768px) {
+			.container {
+				padding: 10px;
+			}
+
+			.header h1 {
+				font-size: 2.5rem;
+			}
+
+			.section {
+				padding: 40px 20px;
+			}
+
+			.intro-section {
+				grid-template-columns: 1fr;
+				text-align: center;
+			}
+
+			.profile-image img {
+				width: 200px;
+				height: 200px;
+			}
+
+			.profile-contact {
+				gap: 10px;
+			}
+
+			.experience-item {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 15px;
+			}
+
+			.company-logo {
+				width: 60px;
+				height: 60px;
+				margin: 0 auto;
+			}
+
+			.publication {
+				grid-template-columns: 1fr;
+				gap: 15px;
+			}
+
+			.publication-figure {
+				max-width: 220px;
+				max-height: 160px;
+				margin: 0 auto;
+				object-fit: contain;
+				border-radius: 8px;
+				background: white;
+				padding: 4px;
+				border: 1px solid #e9ecef;
+				box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+			}
+
+			.contact-links {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.contact-info {
+				margin: 40px -20px -40px -20px;
+			}
+		}
+
+		/* Navigation */
+		.nav-wrapper {
+			background: white;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+		}
+
+		nav {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 70px;
+		}
+
+		.nav-brand {
+			font-size: 1.5rem;
+			font-weight: 700;
+			background: var(--primary-gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-decoration: none;
+		}
+
+		.nav-links {
+			display: flex;
+			gap: 35px;
+			list-style: none;
+		}
+
+		.nav-links a {
+			color: var(--text-primary);
+			text-decoration: none;
+			font-weight: 500;
+			position: relative;
+			transition: color 0.3s ease;
+			padding: 5px 0;
+		}
+
+		.nav-links a:hover {
+			color: var(--accent-color);
+		}
+
+		.nav-links a.active {
+			color: var(--accent-color);
+		}
+
+		.nav-links a.active::after,
+		.nav-links a:hover::after {
+			content: '';
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: var(--accent-color);
+			animation: slideIn 0.3s ease;
+		}
+
+		@keyframes slideIn {
+			from {
+				transform: scaleX(0);
+			}
+
+			to {
+				transform: scaleX(1);
+			}
+		}
+
+		/* Top Navigation */
+		.topnav {
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			backdrop-filter: saturate(180%) blur(10px);
+			background: rgba(255, 255, 255, 0.8);
+			border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+		}
+
+		.topnav-inner {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 12px 20px;
+		}
+
+		.topnav .brand {
+			font-weight: 700;
+			text-decoration: none;
+			color: #2c3e50;
+			font-size: 1.1rem;
+			letter-spacing: .2px;
+		}
+
+		.topnav ul {
+			display: flex;
+			gap: 16px;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.topnav a {
+			text-decoration: none;
+			color: #2c3e50;
+			padding: 8px 12px;
+			border-radius: 10px;
+			transition: all .2s ease;
+			border: 1px solid transparent;
+		}
+
+		.topnav a:hover {
+			border-color: #667eea;
+			box-shadow: 0 2px 8px rgba(102, 126, 234, .18);
+			transform: translateY(-1px);
+		}
+
+		@media (max-width: 768px) {
+			.topnav-inner {
+				padding: 10px;
+			}
+
+			.topnav ul {
+				gap: 8px;
+			}
+
+			.topnav a {
+				padding: 6px 10px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<div class="nav-wrapper">
+		<nav>
+			<a href="index.html" class="nav-brand"></a>
+			<button class="mobile-nav-toggle" onclick="toggleMobileNav()">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+			<ul class="nav-links" id="navLinks">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="publications.html">Publications</a></li>
+				<li><a href="services.html" class="active">Professional Services</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class="container">
+		<main class="content">
+			<!-- Personal Introduction Section -->
+			<section id="about" class="section">
+				<h2>Haibin Huang</h2>
+				<div class="intro-section">
+					<div class="profile-image">
+						<img src="./images/me_kwai.png" alt="Haibin Huang" />
+						<!-- NEW: Contact links under selfie -->
+						<div class="profile-contact" aria-label="Profile contact links">
+							<a href="https://github.com/brotherhuang" target="_blank" rel="noopener">GitHub</a>
+							<a href="https://scholar.google.com/citations?user=YDl1M80AAAAJ&hl=en">Google Scholar</a>
+							<a href="./files/resume_2024.pdf" target="_blank" rel="noopener">CV</a>
+							<p>jackiehuanghaibin <b> at </b> gmail <b> dot</b> com </p>
+						</div>
+					</div>
+					<div class="intro-text">
+						<p>
+							I recently joined
+							<a title="https://github.com/Tele-AI" href="https://github.com/Tele-AI"
+								class="style">TeleAI</a>
+							as Principal Research Scientist, leading research efforts for Multi-Modal Generative AI.
+							Previously,
+							I served as a Generative AI Researcher at
+							<a title="https://www.bytedance.com/en" href="https://www.bytedance.com/en"
+								class="style">ByteDance</a>,
+							Staff Research Scientist at
+							<a title="https://www.kuaishou.com/en" href="https://www.kuaishou.com/en"
+								class="style">Kuaishou Technology</a>,
+							and Research Scientist at
+							<a title="https://en.megvii.com/megvii_research"
+								href="https://en.megvii.com/megvii_research" class="style">Megvii Research</a>.
+							I hold a Ph.D. in Computer Science from the University of Massachusetts Amherst, where I
+							worked with
+							<a title="http://people.cs.umass.edu/~kalo/" href="http://people.cs.umass.edu/~kalo/">Prof.
+								Evangelos Kalogerakis</a>
+							and <a title="http://people.cs.umass.edu/~ruiwang/"
+								href="http://people.cs.umass.edu/~ruiwang/">Prof. Rui Wang</a>
+							in the Computer Graphics Research Group. I earned my bachelor's and master's degrees from
+							the Department of
+							Mathematics at Zhejiang University.
+						</p>
+						<p>
+							My research is dedicated to the analysis and creation of visual content through the
+							integration of computer
+							vision, computer graphics, and machine learning. I aim to devise techniques that simplify
+							the creation and
+							manipulation of digital content, thereby making these processes more user-friendly and
+							accessible.
+						</p>
+						<p>
+							<font color="#FF0000">[2025/07 Update]</font>
+							Our team is hiring full-time research scientists and interns specializing in generative AI,
+							with a focus on
+							Multi-Modal Understanding and Generation (based in Shanghai and Beijing). Feel free
+							to drop me an email if you are interested.
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+</body>
+
+</html>
