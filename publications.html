@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Publications - Haibin Huang</title>
+	<title>Haibin Huang</title>
 	<style>
 		* {
 			margin: 0;
@@ -26,96 +26,21 @@
 			padding: 20px;
 		}
 
-		/* Navigation Bar */
-		/* Navigation */
-		.nav-wrapper {
-			background: white;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-			position: sticky;
-			top: 0;
-			z-index: 1000;
-		}
-
-		nav {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 0 20px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			height: 70px;
-		}
-
-		.nav-brand {
-			font-size: 1.5rem;
-			font-weight: 700;
-			background: var(--primary-gradient);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-			text-decoration: none;
-		}
-
-		.nav-links {
-			display: flex;
-			gap: 35px;
-			list-style: none;
-		}
-
-		.nav-links a {
-			color: var(--text-primary);
-			text-decoration: none;
-			font-weight: 500;
-			position: relative;
-			transition: color 0.3s ease;
-			padding: 5px 0;
-		}
-
-		.nav-links a:hover {
-			color: var(--accent-color);
-		}
-
-		.nav-links a.active {
-			color: var(--accent-color);
-		}
-
-		.nav-links a.active::after,
-		.nav-links a:hover::after {
-			content: '';
-			position: absolute;
-			bottom: -2px;
-			left: 0;
-			right: 0;
-			height: 2px;
-			background: var(--accent-color);
-			animation: slideIn 0.3s ease;
-		}
-
-		@keyframes slideIn {
-			from {
-				transform: scaleX(0);
-			}
-
-			to {
-				transform: scaleX(1);
-			}
-		}
-
 		.header {
 			text-align: center;
-			padding: 40px 0;
+			padding: 60px 0;
 			color: white;
 		}
 
 		.header h1 {
-			font-size: 3rem;
+			font-size: 3.5rem;
 			margin-bottom: 10px;
 			font-weight: 700;
 			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 		}
 
 		.header p {
-			font-size: 1.2rem;
+			font-size: 1.3rem;
 			opacity: .9;
 			font-weight: 300;
 		}
@@ -125,12 +50,18 @@
 			border-radius: 20px;
 			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 			overflow: hidden;
+			margin-top: -30px;
 			position: relative;
 			z-index: 1;
 		}
 
 		.section {
 			padding: 60px 40px;
+			border-bottom: 1px solid #f0f0f0;
+		}
+
+		.section:last-child {
+			border-bottom: none;
 		}
 
 		.section h2 {
@@ -152,216 +83,253 @@
 			border-radius: 2px;
 		}
 
-		.back-link {
-			display: inline-flex;
+		.intro-section {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			gap: 40px;
 			align-items: center;
-			gap: 8px;
-			color: white;
-			text-decoration: none;
-			margin-bottom: 20px;
-			padding: 10px 20px;
-			background: rgba(255, 255, 255, 0.2);
-			border-radius: 25px;
-			transition: all 0.3s ease;
 		}
 
-		.back-link:hover {
-			background: rgba(255, 255, 255, 0.3);
-			transform: translateX(-5px);
+		.profile-image {
+			text-align: center;
 		}
 
-		/* Filter buttons */
-		.filter-container {
+		.profile-image img {
+			width: 250px;
+			height: 250px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 6px solid #fff;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+			transition: transform .3s ease;
+		}
+
+		.profile-image img:hover {
+			transform: scale(1.05);
+		}
+
+		/* NEW: Contact links below selfie */
+		.profile-contact {
+			margin-top: 16px;
 			display: flex;
+			gap: 12px;
 			justify-content: center;
-			gap: 15px;
-			margin-bottom: 40px;
 			flex-wrap: wrap;
 		}
 
-		.filter-btn {
-			padding: 10px 20px;
-			border: 2px solid #667eea;
-			background: white;
-			color: #667eea;
-			border-radius: 25px;
-			cursor: pointer;
-			transition: all 0.3s ease;
-			font-weight: 500;
-		}
-
-		.filter-btn:hover,
-		.filter-btn.active {
-			background: linear-gradient(135deg, #667eea, #764ba2);
-			color: white;
-			transform: translateY(-2px);
-		}
-
-		/* Year divider */
-		.year-divider {
-			text-align: center;
-			margin: 40px 0 30px;
-			position: relative;
-		}
-
-		.year-divider h3 {
-			display: inline-block;
-			background: white;
-			padding: 0 20px;
-			color: #667eea;
-			font-size: 1.8rem;
-			font-weight: 600;
-			position: relative;
-			z-index: 1;
-		}
-
-		.year-divider:before {
-			content: '';
-			position: absolute;
-			top: 50%;
-			left: 0;
-			right: 0;
-			height: 2px;
-			background: linear-gradient(90deg, transparent, #667eea, transparent);
-		}
-
-		/* Publication items */
-		.publication {
+		.profile-contact a {
+			font-size: .95rem;
+			color: #2c3e50;
+			text-decoration: none;
+			padding: 8px 14px;
+			border: 1px solid #e9ecef;
+			border-radius: 20px;
 			background: #fff;
+			transition: all .2s ease;
+		}
+
+		.profile-contact a:hover {
+			border-color: #667eea;
+			box-shadow: 0 4px 10px rgba(102, 126, 234, 0.15);
+			transform: translateY(-1px);
+		}
+
+		.intro-text {
+			font-size: 1.1rem;
+			line-height: 1.8;
+			color: #555;
+		}
+
+		.intro-text h3 {
+			font-size: 1.5rem;
+			color: #2c3e50;
+			margin-bottom: 15px;
+		}
+
+		.experience-item {
+			background: #f8f9fa;
 			padding: 30px;
 			margin-bottom: 25px;
 			border-radius: 15px;
+			border-left: 5px solid #667eea;
+			transition: transform .2s ease, box-shadow .2s ease;
+			display: grid;
+			grid-template-columns: 80px 1fr;
+			gap: 20px;
+			align-items: start;
+		}
+
+		.experience-item:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+		}
+
+		.company-logo {
+			width: 80px;
+			height: 80px;
+			border-radius: 12px;
+			object-fit: contain;
+			background: white;
+			padding: 4px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			border: 2px solid #e9ecef;
+		}
+
+		.experience-content h3 {
+			font-size: 1.4rem;
+			color: #2c3e50;
+			margin-bottom: 5px;
+		}
+
+		.experience-content .company {
+			color: #667eea;
+			font-weight: 600;
+			font-size: 1.1rem;
+			margin-bottom: 10px;
+		}
+
+		.experience-content .period {
+			color: #888;
+			font-style: italic;
+			margin-bottom: 15px;
+		}
+
+		.experience-item ul {
+			list-style: none;
+			padding-left: 0;
+		}
+
+		.experience-item li {
+			padding: 5px 0;
+			padding-left: 20px;
+			position: relative;
+		}
+
+		.experience-item li:before {
+			content: '→';
+			position: absolute;
+			left: 0;
+			color: #667eea;
+			font-weight: bold;
+		}
+
+		/* Publications: content left, figure right; figure fully visible (no cropping) */
+		.publication {
+			background: #fff;
+			padding: 25px;
+			margin-bottom: 20px;
+			border-radius: 12px;
 			border: 1px solid #e9ecef;
 			transition: all .3s ease;
 			display: grid;
-			grid-template-columns: 1fr minmax(180px, 280px);
-			gap: 25px;
+			grid-template-columns: 1fr minmax(140px, 240px);
+			gap: 20px;
 			align-items: start;
-			position: relative;
-			overflow: hidden;
-		}
-
-		.publication:before {
-			content: '';
-			position: absolute;
-			left: 0;
-			top: 0;
-			bottom: 0;
-			width: 5px;
-			background: linear-gradient(135deg, #667eea, #764ba2);
-			opacity: 0;
-			transition: opacity 0.3s ease;
 		}
 
 		.publication:hover {
 			border-color: #667eea;
-			box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-			transform: translateX(5px);
-		}
-
-		.publication:hover:before {
-			opacity: 1;
+			box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
 		}
 
 		.publication-content {
 			min-width: 0;
-			padding-left: 10px;
 		}
 
 		.publication-figure {
 			width: 100%;
 			height: auto;
-			max-height: 200px;
+			max-height: 180px;
 			object-fit: contain;
-			border-radius: 10px;
-			border: 2px solid #f0f0f0;
-			background: #fafafa;
-			padding: 8px;
+			/* no cropping */
+			border-radius: 8px;
+			border: 1px solid #e9ecef;
+			background: #fff;
+			padding: 4px;
 			display: block;
-			transition: all 0.3s ease;
-		}
-
-		.publication:hover .publication-figure {
-			border-color: #667eea30;
-			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
 		}
 
 		.publication-title {
-			font-size: 1.3rem;
+			font-size: 1.2rem;
 			color: #2c3e50;
-			margin-bottom: 12px;
+			margin-bottom: 8px;
 			font-weight: 600;
-			line-height: 1.4;
 		}
 
 		.publication-authors {
 			color: #666;
-			margin-bottom: 8px;
-			font-size: 0.95rem;
-			line-height: 1.6;
-		}
-
-		.publication-authors strong {
-			color: #667eea;
-			font-weight: 600;
+			margin-bottom: 5px;
 		}
 
 		.publication-venue {
-			color: #764ba2;
-			font-weight: 600;
+			color: #667eea;
+			font-weight: 500;
 			font-style: italic;
-			margin-bottom: 12px;
-			font-size: 1.05rem;
 		}
 
-		.publication-links {
-			display: flex;
-			gap: 15px;
-			flex-wrap: wrap;
-			margin-top: 15px;
-		}
-
-		.publication-links a {
-			color: #667eea;
-			text-decoration: none;
-			padding: 6px 15px;
-			border: 1px solid #667eea30;
-			border-radius: 20px;
-			font-size: 0.9rem;
-			transition: all 0.2s ease;
-			background: #667eea05;
-		}
-
-		.publication-links a:hover {
-			background: #667eea;
-			color: white;
-			transform: translateY(-2px);
-			box-shadow: 0 4px 10px rgba(102, 126, 234, 0.2);
-		}
-
-		/* Stats card */
-		.stats-card {
-			background: linear-gradient(135deg, #667eea10, #764ba210);
-			border: 2px solid #667eea30;
-			border-radius: 15px;
-			padding: 30px;
+		.service-category {
 			margin-bottom: 40px;
+		}
+
+		.service-category h3 {
+			font-size: 1.4rem;
+			color: #2c3e50;
+			margin-bottom: 20px;
+			padding-bottom: 10px;
+			border-bottom: 2px solid #f0f0f0;
+		}
+
+		.service-list {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-			gap: 30px;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 15px;
+		}
+
+		.service-item {
+			background: #f8f9fa;
+			padding: 20px;
+			border-radius: 10px;
+			border-left: 4px solid #764ba2;
+		}
+
+		.service-item strong {
+			color: #2c3e50;
+		}
+
+		.contact-info {
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			color: white;
+			padding: 40px;
 			text-align: center;
+			margin: 40px -40px -60px -40px;
+			border-radius: 0 0 20px 20px;
 		}
 
-		.stat-item h4 {
-			font-size: 2.5rem;
-			color: #667eea;
-			margin-bottom: 5px;
-			font-weight: 700;
+		.contact-info h3 {
+			margin-bottom: 20px;
+			font-size: 1.8rem;
 		}
 
-		.stat-item p {
-			color: #666;
-			font-size: 1rem;
+		.contact-links {
+			display: flex;
+			justify-content: center;
+			gap: 30px;
+			flex-wrap: wrap;
+		}
+
+		.contact-links a {
+			color: white;
+			text-decoration: none;
+			padding: 10px 20px;
+			border: 2px solid rgba(255, 255, 255, 0.3);
+			border-radius: 25px;
+			transition: all .3s ease;
+		}
+
+		.contact-links a:hover {
+			background: rgba(255, 255, 255, 0.2);
+			border-color: white;
+			transform: translateY(-2px);
 		}
 
 		@media (max-width: 768px) {
@@ -369,281 +337,854 @@
 				padding: 10px;
 			}
 
-			.navbar {
-				position: static;
-				margin-bottom: 20px;
-			}
-
-			.nav-links {
-				flex-direction: column;
-				align-items: center;
-				gap: 10px;
-			}
-
 			.header h1 {
-				font-size: 2rem;
+				font-size: 2.5rem;
 			}
 
 			.section {
 				padding: 40px 20px;
 			}
 
-			.publication {
+			.intro-section {
 				grid-template-columns: 1fr;
-				gap: 20px;
-				padding: 20px;
+				text-align: center;
 			}
 
-			.publication-figure {
-				max-width: 280px;
-				max-height: 180px;
+			.profile-image img {
+				width: 200px;
+				height: 200px;
+			}
+
+			.profile-contact {
+				gap: 10px;
+			}
+
+			.experience-item {
+				grid-template-columns: 1fr;
+				text-align: center;
+				gap: 15px;
+			}
+
+			.company-logo {
+				width: 60px;
+				height: 60px;
 				margin: 0 auto;
 			}
 
-			.filter-container {
+			.publication {
+				grid-template-columns: 1fr;
+				gap: 15px;
+			}
+
+			.publication-figure {
+				max-width: 220px;
+				max-height: 160px;
+				margin: 0 auto;
+				object-fit: contain;
+				border-radius: 8px;
+				background: white;
+				padding: 4px;
+				border: 1px solid #e9ecef;
+				box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+			}
+
+			.contact-links {
 				flex-direction: column;
 				align-items: center;
 			}
 
-			.stats-card {
-				grid-template-columns: 1fr;
+			.contact-info {
+				margin: 40px -20px -40px -20px;
 			}
 		}
 	</style>
 </head>
 
 <body>
-	<div class="nav-wrapper">
-		<nav>
-			<a href="index.html" class="nav-brand"></a>
-			<button class="mobile-nav-toggle" onclick="toggleMobileNav()">
-				<span></span>
-				<span></span>
-				<span></span>
-			</button>
-			<ul class="nav-links" id="navLinks">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="publications.html">Publications</a></li>
-				<li><a href="services.html" class="active">Professional Services</a></li>
-			</ul>
-		</nav>
+	<div class="container">
+		<header class="header">
+			<!-- Optional page header if you want a hero title -->
+			<!-- <h1>Haibin Huang</h1>
+      <p>Multi-Modal Generative AI • Computer Vision • Computer Graphics</p> -->
+		</header>
+
+		<main class="content">
+
+
+			<!-- Publications Section -->
+			<section id="publications" class="section">
+				<h2>Publications</h2>
+
+				<!-- SIGGRAPH Asia 2025 -->
+				<!-- <div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Hierarchical Neural Semantic Representation for 3D Semantic
+							Correspondence</div>
+						<div class="publication-authors">Keyu Du, Jingyu Hu, Haipeng Li, Hao Xu, <strong>Haibin
+								Huang</strong>, Chi-Wing Fu, Shuaicheng Liu</div>
+						<div class="publication-venue">ACM SIGGRAPH Asia 2025</div>
+					</div>
+					<img src="./publications/3d_corres/3d_corres.jpg" alt="3D Correspondence Figure"
+						class="publication-figure" />
+				</div> -->
+
+				<!-- TPAMI 2025 -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Physically Based Facial Texture Generation in the Wild</div>
+						<div class="publication-authors">Chi Wang, Junming Huang, Rong Zhang, Qi Wang, Haotian Yang,
+							Pengfei Wan, <strong>Haibin Huang</strong>, Chongyang Ma, Weiwei Xu</div>
+						<div class="publication-venue">TPAMI 2025</div>
+					</div>
+					<img src="./publications/pftg/pftg.png" alt="PFTG Figure" class="publication-figure" />
+				</div>
+
+				<!-- TVCG 2025 -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">MotionCrafter: Plug-and-play Motion Guidance for Diffusion Models
+						</div>
+						<div class="publication-authors">Yuxin Zhang, Weiming Dong, Fan Tang, Nisha Huang,
+							<strong>Haibin Huang</strong>, Chongyang Ma, Pengfei Wan, Tong-Yee Lee, Changsheng Xu
+						</div>
+						<div class="publication-venue">TVCG 2025</div>
+					</div>
+					<img src="./publications/motion_craft/motion_craft.png" alt="MotionCrafter Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH 2025 -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">IP-Prompter: Training-Free Theme-Specific Image Generation via
+							Dynamic Visual Prompting</div>
+						<div class="publication-authors">Yuxin Zhang, Minyan Luo, Weiming Dong, Xiao Yang,
+							<strong>Haibin Huang</strong>, Chongyang Ma, Oliver Deussen, Tong-Yee Lee, Changsheng Xu
+						</div>
+						<div class="publication-venue">ACM SIGGRAPH 2025</div>
+					</div>
+					<img src="./publications/ip_prompter/ip.jpg" alt="IP-Prompter Figure" class="publication-figure" />
+				</div>
+
+				<!-- CSCWD 2025 -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Creative-Agent: A Creative Prototype Generation System Driven by
+							Objectives and Key Results</div>
+						<div class="publication-authors">Yi Zheng, Chongyang Ma, Kanle Shi, <strong>Haibin
+								Huang</strong>, Jingwei Chen</div>
+						<div class="publication-venue">CSCWD 2025</div>
+					</div>
+					<img src="./publications/creative-agent/ca.jpg" alt="Creative-Agent Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- NeurIPS 2024 (DeTeCtive) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">DeTeCtive: Detecting AI-generated Text via Multi-Level
+							Contrastive Learning</div>
+						<div class="publication-authors">Xun Guo, Yongxin He, Shan Zhang, Ting Zhang, Wanquan Feng,
+							<strong>Haibin Huang</strong>, Chongyang Ma
+						</div>
+						<div class="publication-venue">NeurIPS 2024</div>
+					</div>
+					<img src="./publications/DeTeCtive/detective.png" alt="DeTeCtive Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- NeurIPS 2024 (YOLA) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">You Only Look Around: Learning Illumination-Invariant Feature for
+							Low-light Object Detection</div>
+						<div class="publication-authors">Mingbo Hong, Shen Cheng, <strong>Haibin Huang</strong>,
+							Haoqiang Fan, Shuaicheng Liu</div>
+						<div class="publication-venue">NeurIPS 2024</div>
+					</div>
+					<img src="./publications/yola/yola.png" alt="YOLA Figure" class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH Asia 2024 (UniHair) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Towards Unified 3D Hair Reconstruction from Single-View Portraits
+						</div>
+						<div class="publication-authors">Yujian Zheng, Yuda Qiu, Leyang Jin, Chongyang Ma,
+							<strong>Haibin Huang</strong>, Di Zhang, Pengfei Wang, Xiaoguang Han
+						</div>
+						<div class="publication-venue">SIGGRAPHASIA 2024</div>
+					</div>
+					<img src="./publications/unihair/unihair.png" alt="UniHair Figure" class="publication-figure" />
+				</div>
+
+				<!-- ECCV 2024 (InterFusion) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">InterFusion: Text-Driven Generation of 3D Human-Object
+							Interaction</div>
+						<div class="publication-authors">Sisi Dai, Wenhao Li, Haowen Sun, <strong>Haibin Huang</strong>,
+							Chongyang Ma, Hui Huang, Kai Xu, Ruizhen Hu</div>
+						<div class="publication-venue">ECCV 2024</div>
+					</div>
+					<img src="./publications/interfusion/InterFusion.png" alt="InterFusion Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH 2024 (Direct-a-Video) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Direct-a-Video: Customized Video Generation with User-Directed
+							Camera Movement and Object Motion</div>
+						<div class="publication-authors">Shiyuan Yang, Liang Hou, <strong>Haibin Huang</strong>,
+							Chongyang Ma, Pengfei Wan, Di Zhang, Xiaodong Chen, Jing Liao</div>
+						<div class="publication-venue">SIGGRAPH 2024 (Conference)</div>
+					</div>
+					<img src="./publications/dirct_a_video/director_a_video.png" alt="Direct-a-Video Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH 2024 (I2V-Adapter) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">I2V-Adapter: A General Image-to-Video Adapter for Diffusion
+							Models</div>
+						<div class="publication-authors">Xun Guo, Mingwu Zheng, Liang Hou, Yuan Gao, Yufan Deng, Pengfei
+							Wan, Di Zhang, Yufan Liu, Weiming Hu, Zhengjun Zha, <strong>Haibin Huang</strong>, Chongyang
+							Ma</div>
+						<div class="publication-venue">SIGGRAPH 2024 (Conference)</div>
+					</div>
+					<img src="./publications/i2v_adaptor/i2v_adaptor.jpeg" alt="I2V-Adapter Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH 2024 (Interaction Transfer) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Spatial and Surface Correspondence Field for Interaction Transfer
+						</div>
+						<div class="publication-authors">Zeyu Huang, Honghao Xu, <strong>Haibin Huang</strong>,
+							Chongyang Ma, Hui Huang, Ruizhen Hu</div>
+						<div class="publication-venue">SIGGRAPH 2024</div>
+					</div>
+					<img src="./publications/inter_trans/inter_tran.jpeg" alt="Interaction Transfer Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH 2024 (VRMM) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">VRMM: A Volumetric Relightable Morphable Head Model</div>
+						<div class="publication-authors">Haotian Yang, Mingwu Zheng, Chongyang Ma, Yu-Kun Lai, Pengfei
+							Wan, <strong>Haibin Huang</strong></div>
+						<div class="publication-venue">SIGGRAPH 2024 (Conference)</div>
+					</div>
+					<img src="./publications/vrmm/vrmm.jpeg" alt="VRMM Figure" class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH 2024 (LGTM) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">LGTM: Local-to-Global Text-Driven Human Motion Diffusion Model
+						</div>
+						<div class="publication-authors">Haowen Sun, Ruikun Zheng, <strong>Haibin Huang</strong>,
+							Chongyang Ma, Hui Huang, Ruizhen Hu</div>
+						<div class="publication-venue">SIGGRAPH 2024 (Conference)</div>
+					</div>
+					<img src="./publications/lgtm/LGTM.jpeg" alt="LGTM Figure" class="publication-figure" />
+				</div>
+
+				<!-- TNNLS 2024 (DiffStyler) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">DiffStyler: Controllable Dual Diffusion for Text-Driven Image
+							Stylization</div>
+						<div class="publication-authors">Nisha Huang, Yuxin Zhang, Fan Tang, Chongyang Ma,
+							<strong>Haibin Huang</strong>, Yong Zhang, Weiming Dong, Changsheng Xu
+						</div>
+						<div class="publication-venue">TNNLS 2024</div>
+					</div>
+					<img src="./publications/diffstyler/diffstyler.png" alt="DiffStyler Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- CVM 2024 (FreeStyler) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">FreeStyler: A Free-Form Stylization Method via Multimodal Vector
+							Quantization</div>
+						<div class="publication-authors">Wuqin Liu, Minxuan Lin, <strong>Haibin Huang</strong>,
+							Chongyang Ma, Weiming Dong</div>
+						<div class="publication-venue">CVM 2024</div>
+					</div>
+					<img src="./publications/freestyler/freestyler.png" alt="FreeStyler Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- PG 2023 (MMFS) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Multi-Modal Face Stylization with a Generative Prior</div>
+						<div class="publication-authors">Mengtian Li, Yi Dong, Minxuan Lin, <strong>Haibin
+								Huang</strong>, Pengfei Wan, Chongyang Ma</div>
+						<div class="publication-venue">PG 2023</div>
+					</div>
+					<img src="./publications/mmfs/mmfs.jpg" alt="MMFS Figure" class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH Asia 2023 (ProSpect) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">ProSpect: Prompt Spectrum of Staged Diffusion Models for Visual
+							Attribute-aware Image Generation</div>
+						<div class="publication-authors">Yuxin Zhang, Weiming Dong, Fan Tang, Nisha Huang,
+							<strong>Haibin Huang</strong>, Chongyang Ma, Tong-Yee Lee, Oliver Deussen, Changsheng Xu
+						</div>
+						<div class="publication-venue">SIGGRAPHASIA 2023</div>
+					</div>
+					<img src="./publications/prospct/prospec.png" alt="ProSpect Figure" class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH Asia 2023 (Relightable Avatars) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Towards Practical Capture of High-Fidelity Relightable Avatars
+						</div>
+						<div class="publication-authors">Haotian Yang, Mingwu Zheng, Wanquan Feng, <strong>Haibin
+								Huang</strong>, Yu-Kun Lai, Pengfei Wan, Zhongyuan Wang, Chongyang Ma</div>
+						<div class="publication-venue">SIGGRAPHASIA 2023 (Conference)</div>
+					</div>
+					<img src="./publications/relight/relight.png" alt="Relightable Avatars Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- ICCV 2023 (Optical Flow) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Explicit Motion Disentangling for Efficient Optical Flow
+							Estimation</div>
+						<div class="publication-authors">Changxing Deng, Ao Luo, <strong>Haibin Huang</strong>, Shaodan
+							Ma, Jiangyu Liu, Shuaicheng Liu</div>
+						<div class="publication-venue">ICCV 2023</div>
+					</div>
+					<img src="./publications/of/of.png" alt="Optical Flow Figure" class="publication-figure" />
+				</div>
+
+				<!-- SGP 2023 (3D Keypoint) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">3D Keypoint Estimation using Implicit Representation Learning
+						</div>
+						<div class="publication-authors">Xiangyu Zhu, Dong Du, <strong>Haibin Huang</strong>, Chongyang
+							Ma, Xiaoguang Han</div>
+						<div class="publication-venue">SGP 2023</div>
+					</div>
+					<img src="./publications/NeuralKeypoint/NeuralKeypoint.png" alt="3D Keypoint Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- TOG 2023 (Unified Style Transfer) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">A Unified Arbitrary Style Transfer Framework via Adaptive
+							Contrastive Learning</div>
+						<div class="publication-authors">Yuxin Zhang, Fan Tang, Weiming Dong, <strong>Haibin
+								Huang</strong>, Chongyang Ma, Tong-Yee Lee, Changsheng Xu</div>
+						<div class="publication-venue">TOG 2023</div>
+					</div>
+					<img src="./publications/unified_style/unified.png" alt="Unified Style Transfer Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2023 (HairStep) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">HairStep: Transfer Synthetic to Real Using Strand and Depth Maps
+							for Single-View 3D Hair Modeling</div>
+						<div class="publication-authors">Yujian Zheng, Zirong Jin, Moran Li, <strong>Haibin
+								Huang</strong>, Chongyang Ma, Shuguang Cui, Xiaoguang Han</div>
+						<div class="publication-venue">CVPR 2023 (Highlight)</div>
+					</div>
+					<img src="./publications/hair_step/hair_step.jpg" alt="HairStep Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2023 (Semi-Weakly Motion) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Semi-Weakly Supervised Object Kinematic Motion Prediction</div>
+						<div class="publication-authors">Gengxin Liu, Qian Sun, <strong>Haibin Huang</strong>, Chongyang
+							Ma, Yulan Guo, Li Yi, Hui Huang, Ruizhen Hu</div>
+						<div class="publication-venue">CVPR 2023</div>
+					</div>
+					<img src="./publications/semi_motion/semi_motion.jpg" alt="Semi-Weakly Motion Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2023 (Inversion-Based Style Transfer) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Inversion-Based Style Transfer with Diffusion Models</div>
+						<div class="publication-authors">Yuxin Zhang, Nisha Huang, Fan Tang, <strong>Haibin
+								Huang</strong>, Chongyang Ma, Weiming Dong, Changsheng Xu</div>
+						<div class="publication-venue">CVPR 2023</div>
+					</div>
+					<img src="./publications/invert/invert.png" alt="Inversion-Based Style Transfer Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- ICLR 2023 (PLSE) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Self-Supervised Category-Level Articulated Object Pose Estimation
+							with Part-Level SE(3) Equivariance</div>
+						<div class="publication-authors">Xueyi Liu, Ji Zhang, Ruizhen Hu, <strong>Haibin Huang</strong>,
+							He Wang, Li Yi</div>
+						<div class="publication-venue">ICLR 2023</div>
+					</div>
+					<img src="./publications/plse/plse.png" alt="PLSE Figure" class="publication-figure" />
+				</div>
+
+				<!-- CVM 2023 (EMM) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Emotion-Aware Music Driven Movie Montage</div>
+						<div class="publication-authors">Wuqin Liu, Minxuan Lin, <strong>Haibin Huang</strong>,
+							Chongyang Ma, Yu Song, Weiming Dong, Changsheng Xu</div>
+						<div class="publication-venue">CVM 2023</div>
+					</div>
+					<img src="./publications/emm/EMM.png" alt="EMM Figure" class="publication-figure" />
+				</div>
+
+				<!-- PG 2022 (Implicit Neural Deformation) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Implicit Neural Deformation for Multi-View Face Reconstruction
+						</div>
+						<div class="publication-authors">Moran Li, <strong>Haibin Huang</strong>, Yi Zheng, Mengtian Li,
+							Nong Sang, Chongyang Ma</div>
+						<div class="publication-venue">PG 2022</div>
+					</div>
+					<img src="./publications/ind_face/ind_face.png" alt="Implicit Neural Deformation Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- IMWUT 2022 (LitAR) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">LitAR: Visually Coherent Lighting for Mobile Augmented Reality
+						</div>
+						<div class="publication-authors">Yiqin Zhao, Chongyang Ma, <strong>Haibin Huang</strong>, Tian
+							Guo</div>
+						<div class="publication-venue">IMWUT</div>
+					</div>
+					<img src="./publications/litar/litar.png" alt="LitAR Figure" class="publication-figure" />
+				</div>
+
+				<!-- ECCV 2022 (D2C-SR) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">D2C-SR: A Divergence to Convergence Approach for Image
+							Super-Resolution</div>
+						<div class="publication-authors">Youwei Li, <strong>Haibin Huang</strong>, Lanpeng Jia, Haoqiang
+							Fan, Shuaicheng Liu</div>
+						<div class="publication-venue">ECCV 2022</div>
+					</div>
+					<img src="./publications/d2c/d2c.png" alt="D2C-SR Figure" class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH 2022 (CAST) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Domain Enhanced Arbitrary Image Style Transfer via Contrastive
+							Learning</div>
+						<div class="publication-authors">Yuxin Zhang, Fan Tang, Weiming Dong, <strong>Haibin
+								Huang</strong>, Chongyang Ma, Tong-Yee Lee, Changsheng Xu</div>
+						<div class="publication-venue">SIGGRAPH 2022 (Conference)</div>
+					</div>
+					<img src="./publications/cast/cast.png" alt="CAST Figure" class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2022 (DCLS) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Deep Constrained Least Squares for Blind Image Super-Resolution
+						</div>
+						<div class="publication-authors">Ziwei Luo, <strong>Haibin Huang</strong>, Lei Yu, Youwei Li,
+							Haoqiang Fan, Shuaicheng Liu</div>
+						<div class="publication-venue">CVPR 2022</div>
+					</div>
+					<img src="./publications/dcsr/dcsr.jpg" alt="DCLS Figure" class="publication-figure" />
+				</div>
+
+				<!-- TVCG 2022 (BFPS) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Task-Aware Sampling Layer for Point-Wise Analysis</div>
+						<div class="publication-authors">Yiqun Lin, Lichang Chen, <strong>Haibin Huang</strong>,
+							Chongyang Ma, Xiaoguang Han, Shuguang Cui</div>
+						<div class="publication-venue">TVCG 2022</div>
+					</div>
+					<img src="./publications/bfps/bfps.png" alt="Task-Aware Sampling Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- CVMJ 2022 (Point Cloud Completion) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Point cloud completion on structured feature map with feedback
+							network</div>
+						<div class="publication-authors">Zejia Su, <strong>Haibin Huang</strong>, Chongyang Ma, Hui
+							Huang, Ruizhen Hu</div>
+						<div class="publication-venue">CVMJ 2022</div>
+					</div>
+					<img src="./publications/sfm/sfm.png" alt="Point Cloud Completion Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- PG 2021 (UprightRL) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">UprightRL: Upright Orientation Estimation of 3D Shapes via
+							Reinforcement Learning</div>
+						<div class="publication-authors">Luanmin Chen, Juzhan Xu, Chuan Wang, <strong>Haibin
+								Huang</strong>, Hui Huang, Ruizhen Hu</div>
+						<div class="publication-venue">PG 2021</div>
+					</div>
+					<img src="./publications/upright/upright.png" alt="UprightRL Figure" class="publication-figure" />
+				</div>
+
+				<!-- ICCV 2021 (HPNet) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">HPNet: Deep Primitive Segmentation Using Hybrid Representations
+						</div>
+						<div class="publication-authors">Siming Yan, Zhenpei Yang, Chongyang Ma, <strong>Haibin
+								Huang</strong>, Etienne Vouga, Qixing Huang</div>
+						<div class="publication-venue">ICCV 2021</div>
+					</div>
+					<img src="./publications/hpnet/hpnet.jpeg" alt="HPNet Figure" class="publication-figure" />
+				</div>
+
+				<!-- ICCV 2021 (Scene Synthesis) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Scene Synthesis via Uncertainty-Driven Attribute Synchronization
+						</div>
+						<div class="publication-authors">Haitao Yang, Zaiwei Zhang, Siming Yan, <strong>Haibin
+								Huang</strong>, Chongyang Ma, Yi Zheng, Chandrajit Bajaj, Qixing Huang</div>
+						<div class="publication-venue">ICCV 2021</div>
+					</div>
+					<img src="./publications/scene/scene.png" alt="Scene Synthesis Figure" class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2021 (FFB6D) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">FFB6D: A Full Flow Bidirectional Fusion Network for 6D Pose
+							Estimation</div>
+						<div class="publication-authors">Yisheng He, <strong>Haibin Huang</strong>, Haoqiang Fan, Qifeng
+							Chen, Jian Sun</div>
+						<div class="publication-venue">CVPR 2021 (Oral presentation)</div>
+					</div>
+					<img src="./publications/ffb6d/ffb6d.png" alt="FFB6D Figure" class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2021 (NBNet) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">NBNet: Noise Basis Learning for Image Denoising with Subspace
+							Projection</div>
+						<div class="publication-authors">Shen Cheng, Yuzhi Wang, <strong>Haibin Huang</strong>, Donghao
+							Liu, Haoqiang Fan, Shuaicheng Liu</div>
+						<div class="publication-venue">CVPR 2021</div>
+					</div>
+					<img src="./publications/nbnet/nbnet.png" alt="NBNet Figure" class="publication-figure" />
+				</div>
+
+				<!-- AAAI 2021 (Video Style) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Arbitrary Video Style Transfer via Multi-Channel Correlation
+						</div>
+						<div class="publication-authors">Yingying Deng, Fan Tang, Weiming Dong, <strong>Haibin
+								Huang</strong>, Chongyang Ma, Changsheng Xu</div>
+						<div class="publication-venue">AAAI 2021</div>
+					</div>
+					<img src="./publications/video_style/video_style.png" alt="Video Style Transfer Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- CoRL 2020 (SAM / LaTeS) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">SAM: Squeeze-and-Mimic Networks for Conditional Visual Driving
+							Policy Learning</div>
+						<div class="publication-authors">Albert Zhao, Tong He, Yitao Liang, <strong>Haibin
+								Huang</strong>, Guy Van den Broeck, Stefano Soatto</div>
+						<div class="publication-venue">CORL 2020</div>
+					</div>
+					<img src="./publications/lates/lates_demo.png" alt="SAM Figure" class="publication-figure" />
+				</div>
+
+				<!-- ECCV 2020 (Practical Raw Denoising) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Practical Deep Raw Image Denoising on Mobile Devices</div>
+						<div class="publication-authors">Yuzhi Wang, <strong>Haibin Huang</strong>, Qin Xu, Jiaming Liu,
+							Yiqun Liu, Jue Wang</div>
+						<div class="publication-venue">ECCV 2020 (Spotlight presentation)</div>
+					</div>
+					<img src="./publications/superiq/superiq.png" alt="Practical Raw Denoising Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2020 (FPConv) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">FPConv: Learning Local Flattening for Point Convolution</div>
+						<div class="publication-authors">Yiqun Lin, Zizheng Yan, <strong>Haibin Huang</strong>, Dong Du,
+							Ligang Liu, Shuguang Cui, Xiaoguang Han</div>
+						<div class="publication-venue">CVPR 2020</div>
+					</div>
+					<img src="./publications/fpconv/fpconv.png" alt="FPConv Figure" class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2020 (PVN3D) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">PVN3D: A Deep Point-wise 3D Keypoints Voting Network for 6DoF
+							Pose Estimation</div>
+						<div class="publication-authors">Yisheng He, Wei Sun, <strong>Haibin Huang</strong>, Jianran
+							Liu, Haoqiang Fan, Jian Sun</div>
+						<div class="publication-venue">CVPR 2020</div>
+					</div>
+					<img src="./publications/pvn3d/pvn3d.png" alt="PVN3D Figure" class="publication-figure" />
+				</div>
+
+				<!-- AAAI 2020 (AWGN Denoiser) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">When AWGN-based Denoiser Meets Real Noises</div>
+						<div class="publication-authors">Yuqian Zhou, Jianbo Jiao, <strong>Haibin Huang</strong>, Yang
+							Wang, Jue Wang, Honghui Shi, Thomas Huang</div>
+						<div class="publication-venue">AAAI 2020</div>
+					</div>
+					<img src="./publications/awgn_denoiser/denoise.png" alt="AWGN Denoiser Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- ICCV 2019 (Disentangled Matting) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Disentangled Image Matting</div>
+						<div class="publication-authors">Shaofan Cai, Xiaoshuai Zhang, Haoqiang Fan, <strong>Haibin
+								Huang</strong>, Jiangyu Liu, Jiaming Liu, Jiaying Liu, Jue Wang, Jian Sun</div>
+						<div class="publication-venue">ICCV 2019</div>
+					</div>
+					<img src="./publications/matting/matting.png" alt="Disentangled Image Matting Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- ICCV 2019 (Skin Detection) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Semi-supervised Skin Detection by Network with Mutual Guidance
+						</div>
+						<div class="publication-authors">Yi He*, Jiayuan Shi*, Chuan Wang, <strong>Haibin
+								Huang</strong>, Jiaming Liu, Guanbin Li, Risheng Liu, Jue Wang</div>
+						<div class="publication-venue">ICCV 2019</div>
+					</div>
+					<img src="./publications/skin/skin.png" alt="Skin Detection Figure" class="publication-figure" />
+				</div>
+
+				<!-- CVPRW 2019 (Raw Denoising) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Learning Raw Image Denoising with Bayer Pattern Unification and
+							Bayer Preserving Augmentation</div>
+						<div class="publication-authors">Jiaming Liu, Chi-Hao Wu, Yuzhi Wang, Qin Xu, Yuqian Zhou,
+							<strong>Haibin Huang</strong>, Chuan Wang, Shaofan Cai, Yifan Ding, Haoqiang Fan, Jue Wang
+						</div>
+						<div class="publication-venue">CVPRW (NTIRE 2019)</div>
+					</div>
+					<img src="./publications/raw_denoise/raw_denoise.jpg" alt="Raw Denoising Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2019 (GIF2Video) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">GIF2Video: Color Dequantization and Temporal Interpolation of GIF
+							images</div>
+						<div class="publication-authors">Yang Wang, <strong>Haibin Huang</strong>, Chuan Wang, Tong He,
+							Jue Wang, Minh Hoai</div>
+						<div class="publication-venue">CVPR 2019</div>
+					</div>
+					<img src="./publications/gif2video/gif2video.jpg" alt="GIF2Video Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2019 (GeoNet) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">GeoNet: Deep Geodesic Networks for Point Cloud Analysis</div>
+						<div class="publication-authors">Tong He, <strong>Haibin Huang</strong>, Li Yi, Yuqian Zhou,
+							Chihao Wu, Jue Wang, Stefano Soatto</div>
+						<div class="publication-venue">CVPR 2019 (Oral presentation)</div>
+					</div>
+					<img src="./publications/geonet/geonet.jpg" alt="GeoNet Figure" class="publication-figure" />
+				</div>
+
+				<!-- AAAI 2019 (Video Inpainting) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Video Inpainting by Jointly Learning Temporal Structure and
+							Spatial Details</div>
+						<div class="publication-authors">Chuan Wang, <strong>Haibin Huang</strong>, Xiaoguang Han, Jue
+							Wang</div>
+						<div class="publication-venue">AAAI 2019</div>
+					</div>
+					<img src="./publications/videoinpainting/video_inpainting.jpg" alt="Video Inpainting Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH Asia 2018 Technical Briefs (GPD) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Gourmet Photography Dataset for Food Image Aesthetic Assessment
+						</div>
+						<div class="publication-authors">Kekai Sheng, Weiming Dong, <strong>Haibin Huang</strong>,
+							Chongyang Ma, Bao-Gang Hu</div>
+						<div class="publication-venue">SIGGRAPH Asia 2018 Technical Briefs</div>
+					</div>
+					<img src="./publications/gpd/2018_gp_thumbnail.jpg" alt="Gourmet Photography Dataset Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH Asia 2018 (Deep Part Induction) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Deep Part Induction from Articulated Object Pairs</div>
+						<div class="publication-authors">Li Yi, <strong>Haibin Huang</strong>, Difan Liu, Evangelos
+							Kalogerakis, Hao Su, Leonidas Guibas</div>
+						<div class="publication-venue">SIGGRAPH Asia 2018</div>
+					</div>
+					<img src="./publications/deep_part/deep_part.jpg" alt="Deep Part Induction Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH Asia 2018 (G2L) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Global-to-Local Generative Model for 3D Shapes</div>
+						<div class="publication-authors">Hao Wang*, Nadav Schor*, Ruizhen Hu, <strong>Haibin
+								Huang</strong>, Daniel Cohen-Or, Hui Huang</div>
+						<div class="publication-venue">SIGGRAPH Asia 2018</div>
+					</div>
+					<img src="./publications/g2l/g2l.jpg" alt="G2L Figure" class="publication-figure" />
+				</div>
+
+				<!-- TOG 2018 / SIGGRAPH 2018 (Local MVCNN) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Learning Local Shape Descriptors from Part Correspondences With
+							Multi-view Convolutional Networks</div>
+						<div class="publication-authors"><strong>Haibin Huang</strong>, Evangelos Kalogerakis,
+							Siddhartha Chaudhuri, Duygu Ceylan, Vladimir Kim, Ersin Yumer</div>
+						<div class="publication-venue">TOG 2018 (also presented at SIGGRAPH 2018)</div>
+					</div>
+					<img src="./publications/local_mvcnn/mvcnn_feature.jpg" alt="Local MVCNN Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH Asia 2017 (Learning to Group Patterns) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Learning to Group Discrete Graphical Patterns</div>
+						<div class="publication-authors">Zhaoliang Lun*, Changqing Zou*, <strong>Haibin Huang</strong>,
+							Evangelos Kalogerakis, Ping Tan, Marie-Paule Cani, Hao Zhang</div>
+						<div class="publication-venue">SIGGRAPH Asia 2017</div>
+					</div>
+					<img src="./publications/learning_patterns/learning_patter.jpg" alt="Learning Patterns Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- ICCV 2017 (High Resolution Shape Completion) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">High Resolution Shape Completion Using Deep Neural Networks for
+							Global Structure and Local Geometry Inference</div>
+						<div class="publication-authors">Xiaoguang Han*, Zhen Li*, <strong>Haibin Huang</strong>,
+							Evangelos Kalogerakis, Yizhou Yu</div>
+						<div class="publication-venue">ICCV 2017 (Spotlight presentation)</div>
+					</div>
+					<img src="./publications/iccv_highRes/high_resolution.jpg"
+						alt="High Resolution Shape Completion Figure" class="publication-figure" />
+				</div>
+
+				<!-- CVPR 2017 (3D VAE / Multi-view) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Synthesizing 3D Shapes via Modeling Multi-View Depth Maps and
+							Silhouettes with Deep Generative Networks</div>
+						<div class="publication-authors">Amir Arsalan Soltani, <strong>Haibin Huang</strong>, Jiajun Wu,
+							Tejas Kulkarni, Joshua Tenenbaum</div>
+						<div class="publication-venue">CVPR 2017</div>
+					</div>
+					<img src="./publications/3dvae/3dvae.jpg" alt="3D VAE Figure" class="publication-figure" />
+				</div>
+
+				<!-- TVCG 2017 (SRPM) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Shape Synthesis from Sketches via Procedural Models and
+							Convolutional Networks</div>
+						<div class="publication-authors"><strong>Haibin Huang</strong>, Evangelos Kalogerakis, M. Ersin
+							Yumer, Radomir Mech</div>
+						<div class="publication-venue">TVCG 2017</div>
+					</div>
+					<img src="./publications/srpm/srpm_thumbnail.jpg" alt="SRPM Figure" class="publication-figure" />
+				</div>
+
+				<!-- SGP 2015 (BSM) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Analysis and synthesis of 3D shape families via deep-learned
+							generative models of surfaces</div>
+						<div class="publication-authors"><strong>Haibin Huang</strong>, Evangelos Kalogerakis, Benjamin
+							Marlin</div>
+						<div class="publication-venue">Computer Graphics Forum (SGP 2015)</div>
+					</div>
+					<img src="./publications/bsm/bsm_thumbnail.jpg" alt="BSM Figure" class="publication-figure" />
+				</div>
+
+				<!-- Eurographics 2014 (Analogy-Driven 3D Style Transfer) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Analogy-Driven 3D Style Transfer</div>
+						<div class="publication-authors">Chongyang Ma, <strong>Haibin Huang</strong>, Alla Sheffer,
+							Evangelos Kalogerakis, Rui Wang</div>
+						<div class="publication-venue">Computer Graphics Forum (Eurographics 2014)</div>
+					</div>
+					<img src="./publications/st/2014_st_thumbnai.png" alt="3D Style Transfer Figure"
+						class="publication-figure" />
+				</div>
+
+				<!-- SIGGRAPH 2012 (GNS) -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Point Sampling with General Noise Spectrum</div>
+						<div class="publication-authors">Yahan Zhou, <strong>Haibin Huang</strong>, Li-Yi Wei, Rui Wang
+						</div>
+						<div class="publication-venue">SIGGRAPH 2012</div>
+					</div>
+					<img src="./publications/gns/2012_gns_thumbnai.jpg" alt="General Noise Spectrum Figure"
+						class="publication-figure" />
+				</div>
+			</section>
+		</main>
 	</div>
-
-	<main class="content">
-		<section class="section">
-			<!-- 2025 Publications -->
-			<div class="year-divider" data-year="2025">
-				<h3>2025</h3>
-			</div>
-
-			<div class="publication" data-year="2025">
-				<div class="publication-content">
-					<div class="publication-title">Hierarchical Neural Semantic Representation for 3D Semantic
-						Correspondence</div>
-					<div class="publication-authors">Keyu Du, Jingyu Hu, Haipeng Li, Hao Xu, <strong>Haibin
-							Huang</strong>, Chi-Wing Fu, Shuaicheng Liu</div>
-					<div class="publication-venue">ACM SIGGRAPH Asia 2025</div>
-					<div class="publication-links">
-						<a href="https://brotherhuang.github.io/">Project Page</a>
-						<a href="https://brotherhuang.github.io/">Paper</a>
-						<a href="https://brotherhuang.github.io/">Code</a>
-					</div>
-				</div>
-				<img src="./publications/3d_corres/3d_corres.jpg" alt="3D Correspondence Figure"
-					class="publication-figure" />
-			</div>
-
-			<div class="publication" data-year="2025">
-				<div class="publication-content">
-					<div class="publication-title">Physically Based Facial Texture Generation in the Wild</div>
-					<div class="publication-authors">Chi Wang, Junming Huang, Rong Zhang, Qi Wang, Haotian Yang,
-						Pengfei Wan, <strong>Haibin Huang</strong>, Chongyang Ma, Weiwei Xu</div>
-					<div class="publication-venue">IEEE Transactions on Pattern Analysis and Machine Intelligence
-						(TPAMI) 2025</div>
-					<div class="publication-links">
-						<a href="https://brotherhuang.github.io/">Project Page</a>
-						<a href="https://brotherhuang.github.io/">Paper</a>
-						<a href="https://brotherhuang.github.io/">Code</a>
-					</div>
-				</div>
-				<img src="./publications/pftg/pftg.png" alt="Facial Texture Figure" class="publication-figure" />
-			</div>
-
-			<div class="publication" data-year="2025">
-				<div class="publication-content">
-					<div class="publication-title">MotionCrafter: Plug-and-play Motion Guidance for Diffusion Models
-					</div>
-					<div class="publication-authors">Yuxin Zhang, Weiming Dong, Fan Tang, Nisha Huang,
-						<strong>Haibin Huang</strong>, Chongyang Ma, Pengfei Wan, Tong-Yee Lee, Changsheng Xu
-					</div>
-					<div class="publication-venue">IEEE Transactions on Visualization and Computer Graphics (TVCG)
-						2025</div>
-					<div class="publication-links">
-						<a href="#">Coming Soon</a>
-					</div>
-				</div>
-				<img src="https://via.placeholder.com/280x180/28a745/ffffff?text=MotionCrafter"
-					alt="MotionCrafter Figure" class="publication-figure" />
-			</div>
-
-			<div class="publication" data-year="2025">
-				<div class="publication-content">
-					<div class="publication-title">IP-Prompter: Training-Free Theme-Specific Image Generation via
-						Dynamic Visual Prompting</div>
-					<div class="publication-authors">Yuxin Zhang, Minyan Luo, Weiming Dong, Xiao Yang,
-						<strong>Haibin Huang</strong>, Chongyang Ma, Oliver Deussen, Tong-Yee Lee, Changsheng Xu
-					</div>
-					<div class="publication-venue">ACM SIGGRAPH 2025</div>
-					<div class="publication-links">
-						<a href="#">Coming Soon</a>
-					</div>
-				</div>
-				<img src="https://via.placeholder.com/280x180/dc3545/ffffff?text=IP-Prompter" alt="IP-Prompter Figure"
-					class="publication-figure" />
-			</div>
-
-			<!-- 2024 Publications -->
-			<div class="year-divider" data-year="2024">
-				<h3>2024</h3>
-			</div>
-
-			<div class="publication" data-year="2024">
-				<div class="publication-content">
-					<div class="publication-title">DeTeCtive: Detecting AI-generated Text via Multi-Level
-						Contrastive Learning</div>
-					<div class="publication-authors">Xun Guo, Yongxin He, Shan Zhang, Ting Zhang, Wanquan Feng,
-						<strong>Haibin Huang</strong>, Chongyang Ma
-					</div>
-					<div class="publication-venue">NeurIPS 2024</div>
-					<div class="publication-links">
-						<a href="#">Paper</a>
-						<a href="#">Code</a>
-					</div>
-				</div>
-				<img src="https://via.placeholder.com/280x180/fd7e14/ffffff?text=DeTeCtive" alt="DeTeCtive Figure"
-					class="publication-figure" />
-			</div>
-
-			<div class="publication" data-year="2024">
-				<div class="publication-content">
-					<div class="publication-title">You Only Look Around: Learning Illumination-Invariant Feature for
-						Low-light Object Detection</div>
-					<div class="publication-authors">Mingbo Hong, Shen Cheng, <strong>Haibin Huang</strong>,
-						Haoqiang Fan, Shuaicheng Liu</div>
-					<div class="publication-venue">NeurIPS 2024</div>
-					<div class="publication-links">
-						<a href="#">Paper</a>
-						<a href="#">Code</a>
-					</div>
-				</div>
-				<img src="https://via.placeholder.com/280x180/6f42c1/ffffff?text=YOLA" alt="YOLA Figure"
-					class="publication-figure" />
-			</div>
-
-			<div class="publication" data-year="2024">
-				<div class="publication-content">
-					<div class="publication-title">Towards Unified 3D Hair Reconstruction from Single-View Portraits
-					</div>
-					<div class="publication-authors">Yujian Zheng, Yuda Qiu, Leyang Jin, Chongyang Ma,
-						<strong>Haibin Huang</strong>, Di Zhang, Pengfei Wang, Xiaoguang Han
-					</div>
-					<div class="publication-venue">SIGGRAPH Asia 2024</div>
-					<div class="publication-links">
-						<a href="#">Paper</a>
-						<a href="#">Project Page</a>
-					</div>
-				</div>
-				<img src="https://via.placeholder.com/280x180/e83e8c/ffffff?text=UniHair" alt="UniHair Figure"
-					class="publication-figure" />
-			</div>
-
-			<div class="publication" data-year="2024">
-				<div class="publication-content">
-					<div class="publication-title">InterFusion: Text-Driven Generation of 3D Human-Object
-						Interaction</div>
-					<div class="publication-authors">Sisi Dai, Wenhao Li, Haowen Sun, <strong>Haibin Huang</strong>,
-						Chongyang Ma, Hui Huang, Kai Xu, Ruizhen Hu</div>
-					<div class="publication-venue">ECCV 2024</div>
-					<div class="publication-links">
-						<a href="#">Paper</a>
-						<a href="#">Project Page</a>
-						<a href="#">Code</a>
-					</div>
-				</div>
-				<img src="https://via.placeholder.com/280x180/20c997/ffffff?text=InterFusion" alt="InterFusion Figure"
-					class="publication-figure" />
-			</div>
-
-			<div class="publication" data-year="2024">
-				<div class="publication-content">
-					<div class="publication-title">Direct-a-Video: Customized Video Generation with User-Directed
-						Camera Movement and Object Motion</div>
-					<div class="publication-authors">Shiyuan Yang, Liang Hou, <strong>Haibin Huang</strong>,
-						Chongyang Ma, Pengfei Wan, Di Zhang, Xiaodong Chen, Jing Liao</div>
-					<div class="publication-venue">SIGGRAPH 2024 (Conference)</div>
-					<div class="publication-links">
-						<a href="#">Paper</a>
-						<a href="#">Project Page</a>
-						<a href="#">Demo</a>
-					</div>
-				</div>
-				<img src="https://via.placeholder.com/280x180/6610f2/ffffff?text=Direct-a-Video"
-					alt="Direct-a-Video Figure" class="publication-figure" />
-			</div>
-
-			<div class="publication" data-year="2024">
-				<div class="publication-content">
-					<div class="publication-title">I2V-Adapter: A General Image-to-Video Adapter for Diffusion
-						Models</div>
-					<div class="publication-authors">Xun Guo, Mingwu Zheng, Liang Hou, Yuan Gao, Yufan Deng, Pengfei
-						Wan, Di Zhang, Yufan Liu, Weiming Hu, Zhengjun Zha, <strong>Haibin Huang</strong>, Chongyang
-						Ma</div>
-					<div class="publication-venue">SIGGRAPH 2024 (Conference)</div>
-					<div class="publication-links">
-						<a href="#">Paper</a>
-						<a href="#">Code</a>
-						<a href="#">Demo</a>
-					</div>
-				</div>
-				<img src="https://via.placeholder.com/280x180/ffc107/ffffff?text=I2V-Adapter" alt="I2V-Adapter Figure"
-					class="publication-figure" />
-			</div>
-		</section>
-	</main>
-	</div>
-
-	<script>
-		function filterPublications(year) {
-			const allPublications = document.querySelectorAll('.publication');
-			const allDividers = document.querySelectorAll('.year-divider');
-			const filterBtns = document.querySelectorAll('.filter-btn');
-
-			// Update active button
-			filterBtns.forEach(btn => btn.classList.remove('active'));
-			event.target.classList.add('active');
-
-			if (year === 'all') {
-				allPublications.forEach(pub => pub.style.display = 'grid');
-				allDividers.forEach(div => div.style.display = 'block');
-			} else {
-				allPublications.forEach(pub => {
-					if (pub.dataset.year === year) {
-						pub.style.display = 'grid';
-					} else {
-						pub.style.display = 'none';
-					}
-				});
-
-				allDividers.forEach(div => {
-					if (div.dataset.year === year) {
-						div.style.display = 'block';
-					} else {
-						div.style.display = 'none';
-					}
-				});
-			}
-		}
-	</script>
 </body>
 
 </html>
