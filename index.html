@@ -397,161 +397,17 @@
 				margin: 40px -20px -40px -20px;
 			}
 		}
-
-		/* Navigation */
-		.nav-wrapper {
-			background: white;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-			position: sticky;
-			top: 0;
-			z-index: 1000;
-		}
-
-		nav {
-			max-width: 1200px;
-			margin: 0 auto;
-			padding: 0 20px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			height: 70px;
-		}
-
-		.nav-brand {
-			font-size: 1.5rem;
-			font-weight: 700;
-			background: var(--primary-gradient);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-			text-decoration: none;
-		}
-
-		.nav-links {
-			display: flex;
-			gap: 35px;
-			list-style: none;
-		}
-
-		.nav-links a {
-			color: var(--text-primary);
-			text-decoration: none;
-			font-weight: 500;
-			position: relative;
-			transition: color 0.3s ease;
-			padding: 5px 0;
-		}
-
-		.nav-links a:hover {
-			color: var(--accent-color);
-		}
-
-		.nav-links a.active {
-			color: var(--accent-color);
-		}
-
-		.nav-links a.active::after,
-		.nav-links a:hover::after {
-			content: '';
-			position: absolute;
-			bottom: -2px;
-			left: 0;
-			right: 0;
-			height: 2px;
-			background: var(--accent-color);
-			animation: slideIn 0.3s ease;
-		}
-
-		@keyframes slideIn {
-			from {
-				transform: scaleX(0);
-			}
-
-			to {
-				transform: scaleX(1);
-			}
-		}
-
-		/* Top Navigation */
-		.topnav {
-			position: sticky;
-			top: 0;
-			z-index: 1000;
-			backdrop-filter: saturate(180%) blur(10px);
-			background: rgba(255, 255, 255, 0.8);
-			border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-		}
-
-		.topnav-inner {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			padding: 12px 20px;
-		}
-
-		.topnav .brand {
-			font-weight: 700;
-			text-decoration: none;
-			color: #2c3e50;
-			font-size: 1.1rem;
-			letter-spacing: .2px;
-		}
-
-		.topnav ul {
-			display: flex;
-			gap: 16px;
-			list-style: none;
-			margin: 0;
-			padding: 0;
-		}
-
-		.topnav a {
-			text-decoration: none;
-			color: #2c3e50;
-			padding: 8px 12px;
-			border-radius: 10px;
-			transition: all .2s ease;
-			border: 1px solid transparent;
-		}
-
-		.topnav a:hover {
-			border-color: #667eea;
-			box-shadow: 0 2px 8px rgba(102, 126, 234, .18);
-			transform: translateY(-1px);
-		}
-
-		@media (max-width: 768px) {
-			.topnav-inner {
-				padding: 10px;
-			}
-
-			.topnav ul {
-				gap: 8px;
-			}
-
-			.topnav a {
-				padding: 6px 10px;
-			}
-		}
 	</style>
 </head>
 
 <body>
-
-	<!-- Navigation -->
-	<div class="nav-wrapper">
-		<nav>
-			<a href="index.html" class="nav-brand"></a>
-			<ul class="nav-links" id="navLinks">
-				<li><a href="index.html">About</a></li>
-				<li><a href="experience.html">Work Experience</a></li>
-				<li><a href="publications.html">Publications</a></li>
-				<li><a href="services.html" class="active"> Services</a></li>
-			</ul>
-		</nav>
-	</div>
-
 	<div class="container">
+		<header class="header">
+			<!-- Optional page header if you want a hero title -->
+			<!-- <h1>Haibin Huang</h1>
+      <p>Multi-Modal Generative AI • Computer Vision • Computer Graphics</p> -->
+		</header>
+
 		<main class="content">
 			<!-- Personal Introduction Section -->
 			<section id="about" class="section">
@@ -563,7 +419,7 @@
 						<div class="profile-contact" aria-label="Profile contact links">
 							<a href="https://github.com/brotherhuang" target="_blank" rel="noopener">GitHub</a>
 							<a href="https://scholar.google.com/citations?user=YDl1M80AAAAJ&hl=en">Google Scholar</a>
-							<a href="./files/resume_2024.pdf" target="_blank" rel="noopener">CV</a>
+							<a href="./files/resume_2025.pdf" target="_blank" rel="noopener">CV</a>
 							<p>jackiehuanghaibin <b> at </b> gmail <b> dot</b> com </p>
 						</div>
 					</div>
@@ -610,6 +466,159 @@
 						</p>
 					</div>
 				</div>
+			</section>
+			<!-- Work Experience Section -->
+			<section id="experience" class="section">
+				<h2>Work Experience</h2>
+
+				<div class="experience-item">
+					<img src="./images/teleai.png" alt="TeleAI Logo" class="company-logo" />
+					<div class="experience-content">
+						<h3>Principal Research Scientist</h3>
+						<div class="company">Institute of Artificial Intelligence, China Telecom (TeleAI)</div>
+						<div class="period">July 2025 - Present</div>
+					</div>
+				</div>
+
+				<div class="experience-item">
+					<img src="./images/bytedance-logo.png" alt="ByteDance Logo" class="company-logo" />
+					<div class="experience-content">
+						<h3>Researcher of Generative AI</h3>
+						<div class="company">ByteDance</div>
+						<div class="period">March 2024 - July 2025</div>
+					</div>
+				</div>
+
+				<div class="experience-item">
+					<img src="./images/kwai_logo.png" alt="Kuaishou Logo" class="company-logo" />
+					<div class="experience-content">
+						<h3>Senior Staff Research Scientist</h3>
+						<div class="company">Kuaishou Technology</div>
+						<div class="period">November 2019 - March 2024</div>
+					</div>
+				</div>
+
+				<div class="experience-item">
+					<img src="./images/megvii_research.png" alt="Megvii Logo" class="company-logo" />
+					<div class="experience-content">
+						<h3>Research Scientist</h3>
+						<div class="company">Megvii Research</div>
+						<div class="period">October 2017 - November 2019</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Publications Section -->
+			<section id="publications" class="section">
+				<h2>
+					Recent Work
+					<a href="publications.html" style="margin-left: 15px; text-decoration: underline; color: #667eea;">
+						Full Publication
+					</a>
+				</h2>
+
+				<!-- SIGGRAPH Asia 2025 -->
+				<!-- <div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Hierarchical Neural Semantic Representation for 3D Semantic
+							Correspondence</div>
+						<div class="publication-authors">Keyu Du, Jingyu Hu, Haipeng Li, Hao Xu, <strong>Haibin
+								Huang</strong>, Chi-Wing Fu, Shuaicheng Liu</div>
+						<div class="publication-venue">ACM SIGGRAPH Asia 2025</div>
+					</div>
+					<img src="./publications/3d_corres/3d_corres.jpg" alt="3D Correspondence Figure"
+						class="publication-figure" />
+				</div> -->
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">Macro-from-Micro Planning for High-Quality and Parallelized
+							Autoregressive Long Video Generation
+						</div>
+						<div class="publication-authors">Xunzhi Xiang, Yabo Chen, Guiyu Zhang, Zhongyu Wang, Zhe Gao,
+							Quanming Xiang, Gonghu Shang, Junqi Liu, <strong>Haibin Huang</strong>, Yang Gao, Chi Zhang,
+							Qi Fan, Xuelong
+							Li
+						</div>
+					</div>
+					<a href="https://nju-xunzhixiang.github.io/Anchor-Forcing-Page/" target="_blank">
+						<img src="./publications/mmp/mmp.png" alt="Description" class="publication-figure" />
+					</a>
+				</div>
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">MAGREF: Masked Guidance for Any-Reference Video Generation
+						</div>
+						<div class="publication-authors">Yufan Deng, Xun Guo, Yuanyang Yin, Jacob Zhiyuan Fang, Yiding
+							Yang, Yizhi Wang, Shenghai Yuan, Angtian Wang, Bo Liu, <strong>Haibin Huang</strong>,
+							Chongyang Ma
+						</div>
+					</div>
+					<a href="https://magref-video.github.io/" target="_blank">
+						<img src="./publications/magref/magref.png" alt="Description" class="publication-figure" />
+					</a>
+				</div>
+
+				<div class="publication">
+					<div class="publication-content">
+						<div class="publication-title">ATI: Any Trajectory Instruction for Controllable Video Generation
+						</div>
+						<div class="publication-authors">Angtian Wang, <strong>Haibin Huang</strong>, Jacob Zhiyuan
+							Fang, Yiding Yang, Chongyang Ma</div>
+					</div>
+					<a href="https://anytraj.github.io/" target="_blank">
+						<img src="./publications/ati/ati.png" alt="Description" class="publication-figure" />
+					</a>
+				</div>
+
+
+			</section>
+
+			<!-- Professional Services Section -->
+			<section id="services" class="section">
+				<h2>Professional Services</h2>
+
+				<div class="service-category">
+					<h3>Editorial Services</h3>
+					<div class="service-list">
+						<div class="service-item">
+							<strong>Associate Editor:</strong> The Visual Computer (2022-Present)
+						</div>
+					</div>
+				</div>
+
+				<div class="service-category">
+					<h3>Program Committee</h3>
+					<div class="service-list">
+						<div class="service-item">
+							<li>SIGGRAPH Technical Papers Committee 2025</li>
+							<li>SIGGRAPH Asia Technical Communications and Posters 2024</li>
+							<li> Eurographics Short Papers 2024</li>
+							<li>Computational Visual Media (CVM) 2023 - 2025</li>
+							<li>Shape Modeling International (SMI) 2020 - 2025</li>
+						</div>
+					</div>
+				</div>
+
+				<!-- <div class="service-category">
+					<h3>Reviewer</h3>
+					<div class="service-list">
+						<div class="service-item">
+							<li>TOG</li>
+							<li>TPAMI</li>
+							<li>SIGGRAPH </li>
+							<li>SIGGRAPH ASIA </li>
+							<li>UIST</li>
+							<li>NeurIPS</li>
+							<li>CVPR</li>
+							<li>ICCV</li>
+							<li>ECCV</li>
+							<li>Eurographics </li>
+							<li>Pacific Graphics</li>
+							<li>CGF</li>
+							<li>AAAI</li>
+							<li>UAI</li>
+						</div>
+					</div> -->
 			</section>
 		</main>
 	</div>
