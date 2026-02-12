@@ -256,6 +256,46 @@
 			font-size: 0.9rem;
 		}
 
+		/* --- NEW: News Section 样式 --- */
+		.news-section {
+			margin-top: 35px;
+			margin-bottom: 35px;
+		}
+
+		.news-section h3 {
+			font-size: 1.3rem;
+			color: #333;
+			border-bottom: 2px solid #f0f0f0;
+			padding-bottom: 10px;
+			margin-bottom: 15px;
+		}
+
+		.news-list {
+			list-style: none;
+			padding: 0;
+			/* 如果新闻太多，可以限制高度并允许滚动，不需要则删除 max-height */
+			/* max-height: 300px; 
+            overflow-y: auto; */
+		}
+
+		.news-item {
+			margin-bottom: 12px;
+			font-size: 0.95rem;
+			display: flex;
+			align-items: baseline;
+		}
+
+		.news-date {
+			font-weight: 600;
+			color: #0066cc;
+			/* 使用和主题一致的蓝色 */
+			min-width: 90px;
+			margin-right: 15px;
+			font-size: 0.9rem;
+			flex-shrink: 0;
+		}
+
+
 		/* Responsive */
 		@media (max-width: 600px) {
 
@@ -339,8 +379,7 @@
 			<div id="about" class="tab-content active">
 				<p>
 					I recently joined <a href="https://github.com/Tele-AI">TeleAI</a> as a Principal Research Scientist
-					and Research Manager,
-					leading research efforts for Multi-Modal Generative AI.
+					and Research Manager, leading research in multi-modal generative AI.
 					Previously, I served as a Generative AI Researcher at <a
 						href="https://www.bytedance.com/en">ByteDance</a>,
 					Staff Research Scientist at <a href="https://www.kuaishou.com/en">Kuaishou Technology</a>,
@@ -355,11 +394,38 @@
 					University.
 				</p>
 				<p>
-					My research is dedicated to the analysis and creation of visual content through the integration of
-					computer vision, computer graphics, and machine learning.
-					I aim to devise techniques that simplify the creation and manipulation of digital content, thereby
-					making these processes more user-friendly and accessible.
+					My research focuses on the analysis and creation of visual content through the integration of
+					computer vision, computer graphics, and machine learning. I aim to develop unified generative
+					frameworks that bridge perception and creation, enabling controllable and high-quality content
+					generation.
+
+					I have a strong track record of translating research into real-world impact across TeleAI,
+					ByteDance, Kuaishou, and Megvii, delivering scalable AI tools used by millions. Ultimately, my goal
+					is to democratize digital creation—making it intuitive and accessible, and lowering the barrier
+					between imagination and expression.
 				</p>
+
+				<div class="news-section">
+					<h3>News</h3>
+					<ul class="news-list">
+						<li class="news-item">
+							<span class="news-date">Feb 2026</span>
+							<span>Released <strong>TeleBoost</strong>, a comprehensive post-training framework for video
+								generation.</span>
+						</li>
+						<li class="news-item">
+							<span class="news-date">Jan 2026</span>
+							<span>Released <strong>TeleStyle</strong>, including official code and pre-trained
+								models.</span>
+						</li>
+						<li class="news-item">
+							<span class="news-date">Dec 2025</span>
+							<span>Released <strong>TeleWorld</strong>, a dynamic 4D world model for multimodal
+								synthesis.</span>
+						</li>
+					</ul>
+				</div>
+
 
 				<div class="hiring-box">
 					Our team is hiring full-time research
